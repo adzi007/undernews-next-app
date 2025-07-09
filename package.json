@@ -1,0 +1,32 @@
+{
+  "name": "zenews",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.8.0-rc.0",
+    "@apollo/experimental-nextjs-app-support": "^0.0.0-commit-473354a",
+    "@auth/supabase-adapter": "^1.10.0",
+    "@supabase/supabase-js": "^2.29.0",
+    "@types/node": "20.3.1",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "bootstrap": "^5.3.0",
+    "eslint": "8.43.0",
+    "eslint-config-next": "13.4.7",
+    "graphql": "^16.7.1",
+    "graphql-request": "^6.1.0",
+    "next": "^13.5.11",
+    "next-auth": "^4.22.3",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
+    "typescript": "5.1.3"
+  }
+}

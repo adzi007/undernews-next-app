@@ -1,0 +1,277 @@
+Ekonomi Bisnis
+Finansial
+Properti
+Energi
+Industri
+Perencanaan Keuangan
+Market Research
+Wawancara
+Sosok
+Bursa Valas
+Konsultasi
+Moneter
+Portofolio
+Solusiukm
+Infografis
+Foto
+Video
+Infrastruktur
+Loker
+Fintech
+
+
+query{
+  postHeadlines{
+    datePublish
+    posts{
+      title
+      slug
+      thumbnail{
+        url
+      }
+      datePublished
+    }
+  }
+  posts{
+    title
+    slug
+    thumbnail{
+      url
+    }
+    datePublished
+    category{
+      name
+    }
+  }
+}
+
+
+---------------------------------------------------------
+
+query{
+  # postHeadlines{
+  #   datePublish
+  #   posts{
+  #     title
+  #     slug
+  #     thumbnail{
+  #       url
+  #     }
+  #     datePublished
+  #   }
+  # }
+  posts(
+    orderBy: publishedAt_DESC, 
+    stage: PUBLISHED,
+    first: 10,
+    skip: 0
+  ){
+    title
+    # slug
+    # thumbnail{
+    #   url
+    # }
+    # datePublished
+    # category{
+    #   name
+    # }
+    publishAt
+  }
+  postsConnection{
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    aggregate {
+      count
+    }
+  }
+  
+}
+
+
+----------------------------------------------
+
+mutation{
+  createComment(data:{
+    content:"test form play ground lorem ipsum",
+    userAccount:{
+      connect:{
+        id: "clkinypvt0pvr0bydexzwggdl"
+      }
+    }
+    post:{
+      connect:{
+        id: "clk8tszgh4tx40a1bwc5vjjbc"
+      }
+    }
+    
+  }) {
+    id
+  }
+}
+
+
+-------------------------------------------------------------------
+
+Authorized redirect URIs
+http://localhost:3000/api/auth/callback/google
+
+
+------------------------------------------------------------------------
+
+mutation{
+  createReply(data:{
+    content: "mencoba mereply commentar kedua",
+    userAccount:{
+      connect:{
+        id: "clkinypvt0pvr0bydexzwggdl"
+      }
+    }
+    comment: {
+      connect: {
+        id:"clkspnrzrdt8t0b14buk1v4lf"
+      }
+    }
+  }) {
+    id
+  }
+}
+
+mutation {
+  publishReply(where:{
+    id: "clkss4jhqdw6m0bzusjipi4oq"
+  }){
+    id
+    publishedAt
+  }
+}
+
+------------------------------------------------
+// reply to repl
+
+
+mutation{
+  createReply(data:{
+    content: "mencoba membalas reply",
+    userAccount:{
+      connect:{
+        id: "clkinypvt0pvr0bydexzwggdl"
+      }
+    }
+    comment: {
+      connect: {
+        id:"clkspnrzrdt8t0b14buk1v4lf"
+      }
+    }
+    parentReply:{
+      connect: {
+        id: "clksstlafdw2r0b1459mf93x5"
+      }
+    }
+  }) {
+    id
+  }
+}
+
+
+
+//--------------------------------------------------------------------------------------------
+
+create/ like a comment
+
+mutation {
+  createCommentResponse(
+    data: {
+      isLike: true, 
+      isDislike: false, 
+      userAccount: {
+        connect: {
+          id: "clkqusbd094cb0bzufd4v6s0m"
+        }
+      }, 
+      comment: {
+        connect: {
+          id: "clkspnrzrdt8t0b14buk1v4lf"
+        }
+      }
+    }
+  ) {
+    id
+  }
+}
+
+result: 
+
+{
+  "data": {
+    "createCommentResponse": {
+      "id": "clkv9ix6k08vq0azszyybz4gh"
+    }
+  }
+}
+
+{
+  "data": {
+    "publishCommentResponse": {
+      "id": "clkv9ix6k08vq0azszyybz4gh"
+    }
+  }
+}
+
+
+mutation {
+  deleteCommentResponse(where:{
+    id: "clkva9m3t0a1y0azs60qzcj1x"
+  }){
+    id
+  }
+}
+
+//------------------------------------------------------------------------------
+
+like reply
+
+mutation {
+  createReplyResponse(
+    data: {
+      userAccount: {
+        connect: {
+          id: "clkqusbd094cb0bzufd4v6s0m"
+        }
+      }, 
+      isLike: true, 
+      reply: {
+        connect: {
+          id: "clkss4jhqdw6m0bzusjipi4oq"
+        }
+      }
+    }
+  ) {
+    id
+  }
+}
+
+response
+
+{
+  "data": {
+    "createReplyResponse": {
+      "id": "clkvjebmf0sba0azsirlco1qc"
+    }
+  }
+}
+
+
+pulish 
+
+mutation {
+  publishReplyResponse(where:{
+    id: "clkvjebmf0sba0azsirlco1qc"
+  }) {
+    id
+  }
+}
+
+
+
